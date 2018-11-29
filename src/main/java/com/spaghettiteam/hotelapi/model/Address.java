@@ -6,14 +6,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class User {
+public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String username;
-    private String password;
-    private String email;
-
+    private String street;
+    private String houseNumber;
+    private String apartamentNumber;
+    private String zipCode;
+    private String city;
 }
