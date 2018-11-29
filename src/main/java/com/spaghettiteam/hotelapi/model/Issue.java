@@ -4,15 +4,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
-public class Fault {
+public class Issue {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     private String description;
-    private Date date;
-    private boolean isFault;
+    private LocalDate date;
+    private boolean wasRepaired;
+    private boolean isImportant;
 }
