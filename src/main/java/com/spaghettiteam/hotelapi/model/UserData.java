@@ -17,7 +17,8 @@ public class UserData {
     private String pesel;
     private String mobileNumber;
 
-    public UserData() { }
+    public UserData() {
+    }
 
     public UserData(Address address, String firstName, String lastName, String pesel, String mobileNumber) {
         this.address = address;
