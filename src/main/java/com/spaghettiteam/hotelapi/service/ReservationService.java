@@ -6,6 +6,7 @@ import com.spaghettiteam.hotelapi.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -16,7 +17,11 @@ public class ReservationService {
 
 
     //ToDo validation
-    public List <Reservation> findAvailableRoomsBetweenDates(TwoDatesSearch twoDatesSearch) {
+    public List<Reservation> findAvailableRoomsBetweenDates(TwoDatesSearch twoDatesSearch) {
         return reservationRepository.findAllAvaibleRoomsBetweendDates(twoDatesSearch.getStartDate(), twoDatesSearch.getEndDate());
+    }
+
+    public List<Reservation> test2(LocalDate localDate) {
+        return reservationRepository.test2(localDate);
     }
 }
