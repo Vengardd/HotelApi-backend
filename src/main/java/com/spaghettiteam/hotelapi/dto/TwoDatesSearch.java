@@ -7,7 +7,8 @@ public class TwoDatesSearch {
     private LocalDate startDate;
     private LocalDate endDate;
 
-    public TwoDatesSearch() {}
+    public TwoDatesSearch() {
+    }
 
     public TwoDatesSearch(LocalDate startDate, LocalDate endDate) {
         this.startDate = startDate;

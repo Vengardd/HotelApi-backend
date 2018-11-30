@@ -23,6 +23,8 @@ public class ReservationController {
     @Autowired
     private ReservationService reservationService;
 
+
+    //ToDo check why twoDatesSearch fields are null
     @PostMapping("/api/find_rooms")
     public List<Reservation> getAvailableRoomsBetweenDates(TwoDatesSearch twoDatesSearch) {
         return reservationService.findAvailableRoomsBetweenDates(twoDatesSearch);
