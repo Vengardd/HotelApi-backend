@@ -17,6 +17,6 @@ public class ReservationService {
 
     //ToDo validation
     public List <Reservation> findAvailableRoomsBetweenDates(TwoDatesSearch twoDatesSearch) {
-        return reservationRepository.findAllByStartDateAndEndDate(twoDatesSearch.getStartDate(), twoDatesSearch.getEndDate());
+        return reservationRepository.findAllAvaibleRoomsBetweendDates(twoDatesSearch.getStartDate(), twoDatesSearch.getEndDate());
     }
 }

@@ -15,6 +15,6 @@ public interface ReservationRepository extends CrudRepository<Reservation, Long>
     @Query(value = "select r from Room r where r.id not in " +
             "(select distinct room from Reservation re " +
             "where (:start >= re.startDate OR :start < re.endDate) OR (:end >= re.startDate OR :end < re.endDate))")
-    List<Reservation> findAllByStartDateAndEndDate(@Param("start") LocalDate startDate,@Param("end") LocalDate endDate);
+    List<Reservation> findAllAvaibleRoomsBetweendDates(@Param("start") LocalDate startDate,@Param("end") LocalDate endDate);
 
 }
