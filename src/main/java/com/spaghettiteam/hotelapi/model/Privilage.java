@@ -6,14 +6,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Room {
+public class Privilage {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String roomNumber;
+    private String name;
 
-    public Room() {
+    public Privilage() {
+    }
+
+    public Privilage(String name) {
+        this.name = name;
     }
 
     public long getId() {
@@ -24,11 +29,11 @@ public class Room {
         this.id = id;
     }
 
-    public String getRoomNumber() {
-        return roomNumber;
+    public String getName() {
+        return name;
     }
 
-    public void setRoomNumber(String roomNumber) {
-        this.roomNumber = roomNumber;
+    public void setName(String name) {
+        this.name = name;
     }
 }
