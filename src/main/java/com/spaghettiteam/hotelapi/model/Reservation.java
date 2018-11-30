@@ -29,18 +29,6 @@ public class Reservation {
         this.endDate = endDate;
     }
 
-    @Override
-    public String toString() {
-        return "Reservation{" +
-                "id=" + id +
-                ", user=" + user +
-                ", room=" + room +
-                ", startDate=" + startDate +
-                ", endDate=" + endDate +
-                '}';
-    }
-
-
     public long getId() {
         return id;
     }
@@ -79,5 +67,17 @@ public class Reservation {
 
     public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Reservation{" +
+                "id=" + id +
+                ", user=" + user +
+                ", room=" + room +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                '}';
     }
 }

@@ -16,6 +16,10 @@ public class Room {
     public Room() {
     }
 
+    public Room(String roomNumber) {
+        this.roomNumber = roomNumber;
+    }
+
     public long getId() {
         return id;
     }

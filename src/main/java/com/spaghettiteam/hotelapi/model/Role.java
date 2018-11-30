@@ -18,4 +18,36 @@ public class Role {
     private Set<Privilage> privilages;
 
     private String name;
+
+    public Role() {
+    }
+
+    public Role(Set<Privilage> privilages, String name) {
+        this.privilages = privilages;
+        this.name = name;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Set<Privilage> getPrivilages() {
+        return privilages;
+    }
+
+    public void setPrivilages(Set<Privilage> privilages) {
+        this.privilages = privilages;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
