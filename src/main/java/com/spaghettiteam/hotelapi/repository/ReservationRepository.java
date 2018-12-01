@@ -19,14 +19,4 @@ public interface ReservationRepository extends CrudRepository<Reservation, Long>
             "OR (:start < re.startDate AND :end > re.endDate))")
     List<Reservation> findAllAvaibleRoomsBetweendDates(@Param("start") LocalDate startDate, @Param("end") LocalDate endDate);
 
-
-    @Query(value = "select room from Reservation r where " +
-            "(:start >= r.startDate AND :start <= r.endDate) OR (:end >= r.startDate AND :end <= r.endDate) " +
-            "OR (:start < r.startDate AND :end > r.endDate)")
-    List<Reservation> test(@Param("start") LocalDate startDate, @Param("end") LocalDate endDate);
-
-
-    @Query(value = "select r from Reservation r where " +
-            "(:start > r.startDate)")
-    List<Reservation> test2(@Param("start") LocalDate startDate);
 }

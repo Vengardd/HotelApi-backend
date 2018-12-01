@@ -23,8 +23,4 @@ public class ReservationService {
         twoDatesSearchValidator.validate(twoDatesSearch);
         return reservationRepository.findAllAvaibleRoomsBetweendDates(twoDatesSearch.getStartDate(), twoDatesSearch.getEndDate());
     }
-
-    public List<Reservation> test2(LocalDate localDate) {
-        return reservationRepository.test2(localDate);
-    }
 }

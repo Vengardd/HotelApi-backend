@@ -27,11 +27,6 @@ public class ReservationController {
         return reservationService.findAvailableRoomsBetweenDates(twoDatesSearch);
     }
 
-    @PostMapping("/api/test")
-    public List<Reservation> test(@DateTimeFormat(iso=DateTimeFormat.ISO.DATE) @ModelAttribute LocalDate localDate) {
-        return reservationService.test2(localDate);
-    }
-
     @GetMapping("/api/add")
     public Reservation addReservation() {
         return reservationRepository.save(new Reservation());
@@ -42,8 +37,4 @@ public class ReservationController {
         return (List<Reservation>) reservationRepository.findAll();
     }
 
-    @ModelAttribute
-    LocalDate initLocalDate() {
-        return LocalDate.now();
-    }
 }
