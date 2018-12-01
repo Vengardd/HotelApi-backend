@@ -15,7 +15,8 @@ public interface ReservationRepository extends CrudRepository<Reservation, Long>
     //ToDo comparing dates its not working, make this works
     @Query(value = "select r from Room r where r.id not in " +
             "(select distinct room from Reservation re " +
-            "where (:start >= re.startDate OR :start < re.endDate) OR (:end >= re.startDate OR :end < re.endDate))")
+            "where (:start >= re.startDate AND :start < re.endDate) OR (:end >= re.startDate AND :end < re.endDate)" +
+            "OR (:start < re.startDate AND :end > re.endDate))")
     List<Reservation> findAllAvaibleRoomsBetweendDates(@Param("start") LocalDate startDate, @Param("end") LocalDate endDate);
 
 

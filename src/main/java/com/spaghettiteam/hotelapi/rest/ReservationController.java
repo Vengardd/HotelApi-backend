@@ -6,10 +6,7 @@ import com.spaghettiteam.hotelapi.repository.ReservationRepository;
 import com.spaghettiteam.hotelapi.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -26,7 +23,7 @@ public class ReservationController {
 
     //ToDo check why twoDatesSearch fields are null
     @PostMapping("/api/find_rooms")
-    public List<Reservation> getAvailableRoomsBetweenDates(TwoDatesSearch twoDatesSearch) {
+    public List<Reservation> getAvailableRoomsBetweenDates(@RequestBody TwoDatesSearch twoDatesSearch) {
         return reservationService.findAvailableRoomsBetweenDates(twoDatesSearch);
     }
 
