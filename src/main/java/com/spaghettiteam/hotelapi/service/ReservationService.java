@@ -19,6 +19,8 @@ public class ReservationService {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private RoomService roomService;
 
     @Autowired
     private Validator<TwoDatesSearch> twoDatesSearchValidator;
@@ -28,9 +30,12 @@ public class ReservationService {
         return reservationRepository.findAllAvaibleRoomsBetweendDates(twoDatesSearch.getStartDate(), twoDatesSearch.getEndDate());
     }
 
-    public Reservation addReservation(ReservationDTO reservation) {
-        twoDatesSearchValidator.validate(new TwoDatesSearch(reservation.getStartDate(), reservation.getEndDate()));
-        userService.findById(reservation.getUserId());
-        return new Reservation();
+    public Reservation addReservation(ReservationDTO reservationDTO) {
+        twoDatesSearchValidator.validate(new TwoDatesSearch(reservationDTO.getStartDate(), reservationDTO.getEndDate()));
+        return reservationRepository.save(Reservation.ReservationBuilder.aReservation()
+                .withUser(userService.findById(reservationDTO.getUserId()))
+                .withRoom(roomService.findById(reservationDTO.getRoomId()))
+                .withStartDate(reservationDTO.getStartDate())
+                .build());
     }
 }

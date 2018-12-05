@@ -80,4 +80,54 @@ public class Reservation {
                 ", endDate=" + endDate +
                 '}';
     }
+
+    public static final class ReservationBuilder {
+        private long id;
+        private User user;
+        private Room room;
+        private LocalDate startDate;
+        private LocalDate endDate;
+
+        private ReservationBuilder() {
+        }
+
+        public static ReservationBuilder aReservation() {
+            return new ReservationBuilder();
+        }
+
+        public ReservationBuilder withId(long id) {
+            this.id = id;
+            return this;
+        }
+
+        public ReservationBuilder withUser(User user) {
+            this.user = user;
+            return this;
+        }
+
+        public ReservationBuilder withRoom(Room room) {
+            this.room = room;
+            return this;
+        }
+
+        public ReservationBuilder withStartDate(LocalDate startDate) {
+            this.startDate = startDate;
+            return this;
+        }
+
+        public ReservationBuilder withEndDate(LocalDate endDate) {
+            this.endDate = endDate;
+            return this;
+        }
+
+        public Reservation build() {
+            Reservation reservation = new Reservation();
+            reservation.setId(id);
+            reservation.setUser(user);
+            reservation.setRoom(room);
+            reservation.setStartDate(startDate);
+            reservation.setEndDate(endDate);
+            return reservation;
+        }
+    }
 }
