@@ -11,4 +11,9 @@ public class WelcomeController {
         return "Hello world!";
     }
 
+
+    @GetMapping("/api/logged")
+    public String welcomeForLogged() {
+        return "Hello world for logged!";
+    }
 }
