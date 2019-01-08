@@ -1,5 +1,6 @@
 package com.spaghettiteam.hotelapi.config;
 
+import com.auth0.AuthenticationController;
 import com.auth0.spring.security.api.JwtWebSecurityConfigurer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -11,10 +12,19 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Value(value = "${com.auth0.domain}")
+    private String domain;
+    @Value(value = "${com.auth0.clientId}")
+    private String clientId;
+    @Value(value = "${com.auth0.clientSecret}")
+    private String clientSecret;
+
 
     @Value(value = "${auth0.apiAudience}")
     private String apiAudience;
@@ -45,5 +55,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/api").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/**").permitAll();
+    }
+
+    @Bean
+    public AuthenticationController authenticationController() throws UnsupportedEncodingException {
+        return AuthenticationController.newBuilder(domain, clientId, clientSecret)
+                .build();
     }
 }
