@@ -43,28 +43,28 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return source;
     }
 
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//        http.cors();
-//        JwtWebSecurityConfigurer
-//                .forRS256(apiAudience, issuer)
-//                .configure(http)
-//                .authorizeRequests()
-//                .antMatchers(HttpMethod.GET, "/api").permitAll()
-//                .antMatchers(HttpMethod.GET, "/api/logged").authenticated()
-//                .antMatchers(HttpMethod.GET, "/api").permitAll()
-//                .antMatchers(HttpMethod.GET, "/api/**").permitAll()
-//                .antMatchers(HttpMethod.POST, "/api/**").permitAll();
-//    }
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http.cors();
         JwtWebSecurityConfigurer
                 .forRS256(apiAudience, issuer)
                 .configure(http)
-                .cors().and().csrf().disable().authorizeRequests()
-                .anyRequest().permitAll();
+                .authorizeRequests()
+                .antMatchers(HttpMethod.GET, "/api").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/logged").authenticated()
+                .antMatchers(HttpMethod.GET, "/api").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/**").permitAll();
     }
+
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception {
+//        JwtWebSecurityConfigurer
+//                .forRS256(apiAudience, issuer)
+//                .configure(http)
+//                .cors().and().csrf().disable().authorizeRequests()
+//                .anyRequest().permitAll();
+//    }
 
     @Bean
     public AuthenticationController authenticationController() throws UnsupportedEncodingException {
