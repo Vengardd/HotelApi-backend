@@ -1,9 +1,9 @@
-package com.spaghettiteam.hotelapi.repository;
+package com.spaghettiteam.hotelapi.repository.user;
 
 import com.spaghettiteam.hotelapi.model.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends CrudRepository<User, Long> {
+public interface UserCrudRepository extends CrudRepository<User, Long> {
 }

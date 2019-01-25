@@ -1,4 +1,4 @@
-package com.spaghettiteam.hotelapi.repository;
+package com.spaghettiteam.hotelapi.repository.reservation;
 
 import com.spaghettiteam.hotelapi.model.Reservation;
 import org.springframework.data.jpa.repository.Query;
@@ -10,9 +10,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Repository
-public interface ReservationRepository extends CrudRepository<Reservation, Long> {
+public interface ReservationCrudRepository extends CrudRepository<Reservation, Long> {
 
-    //ToDo comparing dates its not working, make this works
     @Query(value = "select r from Room r where r.id not in " +
             "(select distinct room from Reservation re " +
             "where (:start >= re.startDate AND :start < re.endDate) OR (:end >= re.startDate AND :end < re.endDate)" +

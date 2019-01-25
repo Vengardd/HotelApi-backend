@@ -2,7 +2,7 @@ package com.spaghettiteam.hotelapi.service;
 
 import com.spaghettiteam.hotelapi.exception.UserNotFoundException;
 import com.spaghettiteam.hotelapi.model.User;
-import com.spaghettiteam.hotelapi.repository.UserRepository;
+import com.spaghettiteam.hotelapi.repository.user.UserCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserCrudRepository userRepository;
 
     public User findById(long id) {
         return userRepository.findById(id).orElseThrow(UserNotFoundException::new);
