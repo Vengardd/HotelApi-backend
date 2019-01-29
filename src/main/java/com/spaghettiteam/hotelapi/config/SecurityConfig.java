@@ -6,13 +6,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.Arrays;
-
+@EnableWebSecurity
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -21,10 +22,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Value(value = "${auth0.issuer}")
     private String issuer;
 
+
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("*"));
+        configuration.setAllowedOrigins(Arrays.asList("**"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST"));
         configuration.setAllowCredentials(true);
         configuration.setAllowedHeaders(Arrays.asList("Authorization"));
@@ -40,9 +42,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .forRS256(apiAudience, issuer)
                 .configure(http)
                 .authorizeRequests()
-//                .antMatchers(HttpMethod.GET, "/api").permitAll()
-//                .antMatchers(HttpMethod.GET, "/api/logged").authenticated();
-                .antMatchers(HttpMethod.GET, "/api/**").permitAll()
-                .antMatchers(HttpMethod.POST, "/api/**").permitAll();
+                .antMatchers(HttpMethod.GET, "/api/").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/**").authenticated()
+                .antMatchers(HttpMethod.GET, "/api/private-scoped").hasAuthority("read:messages");
     }
 }
