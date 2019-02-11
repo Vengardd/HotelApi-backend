@@ -7,10 +7,7 @@ import com.spaghettiteam.hotelapi.model.Reservation;
 import com.spaghettiteam.hotelapi.model.Room;
 import com.spaghettiteam.hotelapi.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,11 +17,13 @@ public class ReservationController {
     @Autowired
     private ReservationService reservationService;
 
+    @CrossOrigin(origins = "https://hotelapi-backend.herokuapp.com")
     @PostMapping("/api/find_rooms")
     public List<Reservation> getAvailableRoomsBetweenDates(@RequestBody TwoDatesSearch twoDatesSearch) {
         return reservationService.findAvailableRoomsBetweenDates(twoDatesSearch);
     }
 
+    @CrossOrigin(origins = "https://hotelapi-backend.herokuapp.com/*")
     @PostMapping("/api/reservation/add")
     public Reservation addReservation(@RequestBody ReservationDTO reservation) {
         return reservationService.addReservation(reservation);
