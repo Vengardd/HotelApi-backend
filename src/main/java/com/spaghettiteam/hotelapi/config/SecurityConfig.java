@@ -42,7 +42,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .forRS256(apiAudience, issuer)
                 .configure(http)
                 .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/api/").permitAll()
-                .antMatchers(HttpMethod.GET, "/api/**").authenticated();
+                .antMatchers(HttpMethod.GET, "/api").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/logged").authenticated()
+                .antMatchers(HttpMethod.GET, "/api/admin").hasAuthority("admin");
     }
 }

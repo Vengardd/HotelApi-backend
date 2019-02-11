@@ -6,16 +6,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class WelcomeController {
 
-
-    //    @CrossOrigin(origins = "*")
     @GetMapping("/api")
     public String welcome() {
         return "Hello world!";
     }
 
-
     @GetMapping("/api/logged")
     public String welcomeForLogged() {
         return "Hello world for logged!";
+    }
+
+    @GetMapping("/api/admin")
+    public String welcomeForAdmin() {
+        return "Hello admin!";
     }
 }
