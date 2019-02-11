@@ -12,12 +12,18 @@ public class Room {
     private long id;
 
     private String roomNumber;
+    private long pricePerDay;
 
     public Room() {
     }
 
     public Room(String roomNumber) {
         this.roomNumber = roomNumber;
+    }
+
+    public Room(String roomNumber, long pricePerDay) {
+        this.roomNumber = roomNumber;
+        this.pricePerDay = pricePerDay;
     }
 
     public long getId() {
@@ -34,5 +40,13 @@ public class Room {
 
     public void setRoomNumber(String roomNumber) {
         this.roomNumber = roomNumber;
+    }
+
+    public long getPricePerDay() {
+        return pricePerDay;
+    }
+
+    public void setPricePerDay(long pricePerDay) {
+        this.pricePerDay = pricePerDay;
     }
 }
