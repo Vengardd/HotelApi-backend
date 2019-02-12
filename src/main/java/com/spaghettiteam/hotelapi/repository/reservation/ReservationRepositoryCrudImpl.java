@@ -22,4 +22,9 @@ public class ReservationRepositoryCrudImpl implements ReservationRepository {
     public Reservation save(Reservation reservation) {
         return repository.save(reservation);
     }
+
+    @Override
+    public List<Reservation> findAllAvaibleRoomsBetweendDatesAndWithinPrice(LocalDate startDate, LocalDate endDate, long lowestPriceMuliplied, long highestPriceMultiplied) {
+        return null;
+    }
 }

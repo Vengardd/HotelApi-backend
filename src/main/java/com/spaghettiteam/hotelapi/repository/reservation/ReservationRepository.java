@@ -9,4 +9,5 @@ import java.util.List;
 public interface ReservationRepository {
     List<Reservation> findAllAvaibleRoomsBetweendDates(@Param("start") LocalDate startDate, @Param("end") LocalDate endDate);
     Reservation save(Reservation reservation);
+    List<Reservation> findAllAvaibleRoomsBetweendDatesAndWithinPrice(LocalDate startDate, LocalDate endDate, long lowestPriceMuliplied, long highestPriceMultiplied);
 }

@@ -10,7 +10,6 @@ public class TwoDatesSearch {
     public TwoDatesSearch() {
     }
 
-
     public TwoDatesSearch(LocalDate startDate, LocalDate endDate) {
         this.startDate = startDate;
         this.endDate = endDate;

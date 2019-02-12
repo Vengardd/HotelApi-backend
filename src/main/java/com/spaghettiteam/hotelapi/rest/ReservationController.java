@@ -2,6 +2,7 @@ package com.spaghettiteam.hotelapi.rest;
 
 import com.spaghettiteam.hotelapi.dto.ReservationDTO;
 import com.spaghettiteam.hotelapi.dto.RoomDTO;
+import com.spaghettiteam.hotelapi.dto.TwoDatesAndTwoPriceSearch;
 import com.spaghettiteam.hotelapi.dto.TwoDatesSearch;
 import com.spaghettiteam.hotelapi.model.Reservation;
 import com.spaghettiteam.hotelapi.model.Room;
@@ -21,6 +22,11 @@ public class ReservationController {
     @PostMapping("/api/find_rooms")
     public List<Reservation> getAvailableRoomsBetweenDates(@RequestBody TwoDatesSearch twoDatesSearch) {
         return reservationService.findAvailableRoomsBetweenDates(twoDatesSearch);
+    }
+
+    @PostMapping("/api/find_rooms")
+    public List<Reservation> getAvailableRoomsBewtweenDatesAndWithinPrice(@RequestBody TwoDatesAndTwoPriceSearch twoDatesAndTwoPriceSearch) {
+        return reservationService.findAvailableRoomsBetweenDatesAndPrices(twoDatesAndTwoPriceSearch);
     }
 
     @CrossOrigin(origins = "https://hotelapi-backend.herokuapp.com/*")
