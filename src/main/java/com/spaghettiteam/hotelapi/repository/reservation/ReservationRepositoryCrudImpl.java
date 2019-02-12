@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class ReservationRepositoryCrudImpl implements ReservationRepository {
@@ -19,8 +20,33 @@ public class ReservationRepositoryCrudImpl implements ReservationRepository {
     }
 
     @Override
+    public List<Reservation> findAllByRoomNumber(long roomNumber) {
+        return repository.findAllByRoom(roomNumber);
+    }
+
+    @Override
+    public void updateById(long id, Reservation reservation) {
+        deleteById(id);
+        save(reservation);
+    }
+
+    @Override
+    public Optional<Reservation> findById(long id) {
+        return repository.findById(id);
+    }
+
+    @Override
+    public List<Reservation> findAll() {
+        return (List) repository.findAll();
+    }
+
+    @Override
     public Reservation save(Reservation reservation) {
         return repository.save(reservation);
+    }
+
+    public void deleteById(long id) {
+        repository.deleteById(id);
     }
 
     @Override
