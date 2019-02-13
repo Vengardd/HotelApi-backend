@@ -30,21 +30,17 @@ public class ReservationService {
     private Validator<TwoDatesSearch> twoDatesSearchValidator;
 
 
-    //ToDo reorganize finding rooms
-    public List<Reservation> findAvailableRoomsBetweenDates(TwoDatesSearch twoDatesSearch) {
-        twoDatesSearchValidator.validate(twoDatesSearch);
-        return reservationRepository.findAllAvaibleRoomsBetweendDates(twoDatesSearch.getStartDate(), twoDatesSearch.getEndDate());
-    }
 
     public Reservation getReservationById(long id) {
         return reservationRepository.findById(id).orElseThrow(RoomNotFoundException::new);
     }
 
     public Reservation updateReservationById(long id, Reservation newReservation) {
-       Reservation reservation = reservationRepository.findById(id).orElseThrow(ReservationNotFoundException::new);
-       reservationRepository.updateById(id, newReservation);
-       return reservation; //TRZEBA PRZETESTOWAC
+        Reservation reservation = reservationRepository.findById(id).orElseThrow(ReservationNotFoundException::new);
+        reservationRepository.updateById(id, newReservation);
+        return reservation; //TRZEBA PRZETESTOWAC
     }
+
     public List<Reservation> getAllReservations() {
         return reservationRepository.findAll();
     }
@@ -54,9 +50,11 @@ public class ReservationService {
         reservationRepository.deleteById(id);
         return reservation;
     }
+
     public List<Reservation> getAllByReservationsByRoomNumber(long roomNumber) {
         return reservationRepository.findAllByRoomNumber(roomNumber);
     }
+
     public Reservation addReservation(ReservationDTO reservationDTO) {
         twoDatesSearchValidator.validate(new TwoDatesSearch(reservationDTO.getStartDate(), reservationDTO.getEndDate()));
         return reservationRepository.save(Reservation.ReservationBuilder.aReservation()
@@ -66,6 +64,12 @@ public class ReservationService {
                 .build());
     }
 
+    @Deprecated
+    public List<Reservation> findAvailableRoomsBetweenDates(TwoDatesSearch twoDatesSearch) {
+        twoDatesSearchValidator.validate(twoDatesSearch);
+        return reservationRepository.findAllAvaibleRoomsBetweendDates(twoDatesSearch.getStartDate(), twoDatesSearch.getEndDate());
+    }
+    @Deprecated
     public List<Reservation> findAvailableRoomsBetweenDatesAndPrices(TwoDatesAndTwoPriceSearch twoDatesAndTwoPriceSearch) {
 //        twoDatesAndTwoPriceSearchValidator.validate(twoDatesAndTwoPriceSearch);
         long days = countDaysFromTwoDatesSearch(twoDatesAndTwoPriceSearch.getTwoDates());
