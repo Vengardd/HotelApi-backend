@@ -13,7 +13,11 @@ public interface RoomRepository {
 
     Room save(Room room);
 
+    void deleteById(long id);
+
     List<Room> findRoomsWithinPrice(long startPrice, long endPrice);
 
     List<Room> findAvailableRooms(long lowestPrice, long highestPrice, LocalDate startDate, LocalDate endDate);
+
+    void updateById(long id, Room newRoom);
 }

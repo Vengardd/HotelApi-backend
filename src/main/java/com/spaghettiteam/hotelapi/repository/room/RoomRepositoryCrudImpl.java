@@ -38,4 +38,15 @@ public class RoomRepositoryCrudImpl implements RoomRepository {
     public List<Room> findRoomsWithinPrice(long startPrice, long endPrice) {
         return roomCrudRepository.findAllByPricePerDayGreaterThanEqualAndPricePerDayIsLessThanEqual(startPrice, endPrice);
     }
+
+    @Override
+    public void updateById(long id, Room newRoom) {
+        deleteById(id);
+        save(newRoom);
+    }
+
+    @Override
+    public void deleteById(long id) {
+        roomCrudRepository.deleteById(id);
+    }
 }

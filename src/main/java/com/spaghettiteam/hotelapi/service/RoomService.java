@@ -20,17 +20,29 @@ public class RoomService {
         return roomRepository.findById(id).orElseThrow(RoomNotFoundException::new);
     }
 
-    private Room findByRoomNumber(String roomNumber) {
+   public Room findByRoomNumber(String roomNumber) {
         return roomRepository.findByRoomNumber(roomNumber).orElseThrow(RoomNotFoundException::new);
     }
 
-    private Optional<Room> findByRoomNumberWOException(String roomNumber) {
+   public Optional<Room> findByRoomNumberWOException(String roomNumber) {
         return roomRepository.findByRoomNumber(roomNumber);
     }
 
     public Room addRoom(RoomDTO room) {
-        if(!roomRepository.findByRoomNumber(room.getRoomNumber()).isPresent())
+        if(!findByRoomNumberWOException(room.getRoomNumber()).isPresent())
             return roomRepository.save(new Room(room.getRoomNumber()));
         throw new RoomAlreadyExistException();
+    }
+
+    public Room deleteRoomById(long id) {
+        Room room = roomRepository.findById(id).orElseThrow(RoomNotFoundException::new);
+        roomRepository.deleteById(id);
+        return room;
+    }
+
+    public Room updateRoomById(long id, Room newRoom) {
+        Room room = roomRepository.findById(id).orElseThrow(RoomNotFoundException::new);
+        roomRepository.updateById(id, newRoom);
+        return room;
     }
 }
