@@ -46,17 +46,7 @@ public class ReservationController {
         return reservationService.addReservation(reservation);
     }
 
-    @Deprecated
-    @PostMapping("/api/find_rooms")
-    public List<Reservation> getAvailableRoomsBetweenDates(@RequestBody TwoDatesSearch twoDatesSearch) {
-        return reservationService.findAvailableRoomsBetweenDates(twoDatesSearch);
-    }
 
-    @Deprecated
-    @PostMapping("/api/find_rooms")
-    public List<Reservation> getAvailableRoomsBewtweenDatesAndWithinPrice(@RequestBody TwoDatesAndTwoPriceSearch twoDatesAndTwoPriceSearch) {
-        return reservationService.findAvailableRoomsBetweenDatesAndPrices(twoDatesAndTwoPriceSearch);
-    }
 
 
 }
