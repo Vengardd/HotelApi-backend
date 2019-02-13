@@ -8,6 +8,8 @@ import com.spaghettiteam.hotelapi.repository.room.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class RoomService {
 
@@ -22,13 +24,13 @@ public class RoomService {
         return roomRepository.findByRoomNumber(roomNumber).orElseThrow(RoomNotFoundException::new);
     }
 
-    //ToDo refactore, looks bad
+    private Optional<Room> findByRoomNumberWOException(String roomNumber) {
+        return roomRepository.findByRoomNumber(roomNumber);
+    }
+
     public Room addRoom(RoomDTO room) {
-        try {
-            findByRoomNumber(room.getRoomNumber());
-        } catch (RoomNotFoundException e) {
+        if(!roomRepository.findByRoomNumber(room.getRoomNumber()).isPresent())
             return roomRepository.save(new Room(room.getRoomNumber()));
-        }
         throw new RoomAlreadyExistException();
     }
 }

@@ -17,7 +17,7 @@ public class ReservationController {
     private ReservationService reservationService;
 
     @GetMapping("/api/reservation/{id}")
-    public Reservation getReservationId(@PathVariable long id) {
+    public Reservation getReservationId(@PathVariable("id") long id) {
         return reservationService.getReservationById(id);
     }
 
@@ -27,22 +27,21 @@ public class ReservationController {
     }
 
     @GetMapping("/api/reservation/room/{roomNumber}")
-    public List<Reservation> getAllReservationsByRoomNumber(@PathVariable long roomNumber) {
+    public List<Reservation> getAllReservationsByRoomNumber(@PathVariable("roomNumber") long roomNumber) {
         return reservationService.getAllByReservationsByRoomNumber(roomNumber);
     }
 
     @DeleteMapping("/api/reservation/{id}")
-    public Reservation deleteReservationId(@PathVariable long id) {
+    public Reservation deleteReservationId(@PathVariable("id") long id) {
         return reservationService.deleteReservationById(id);
     }
 
     @PostMapping("/api/reservation/{id}")
-    public Reservation updateReservationId(@PathVariable long id, @RequestBody Reservation reservation) {
+    public Reservation updateReservationId(@PathVariable("id") long id, @RequestBody Reservation reservation) {
         return reservationService.updateReservationById(id, reservation);
     }
 
     @PostMapping("/api/reservation/add")
-
     public Reservation addReservation(@RequestBody ReservationDTO reservation) {
         return reservationService.addReservation(reservation);
     }

@@ -49,6 +49,7 @@ public class ReservationRepositoryCrudImpl implements ReservationRepository {
         repository.deleteById(id);
     }
 
+    @Deprecated
     @Override
     public List<Reservation> findAllAvaibleRoomsBetweendDatesAndWithinPrice(LocalDate startDate, LocalDate endDate, long lowestPriceMuliplied, long highestPriceMultiplied) {
         return null;

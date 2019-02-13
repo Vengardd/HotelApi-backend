@@ -29,20 +29,18 @@ public class ReservationService {
     @Autowired
     private Validator<TwoDatesSearch> twoDatesSearchValidator;
 
-
-
     public Reservation getReservationById(long id) {
         return reservationRepository.findById(id).orElseThrow(RoomNotFoundException::new);
+    }
+
+    public List<Reservation> getAllReservations() {
+        return reservationRepository.findAll();
     }
 
     public Reservation updateReservationById(long id, Reservation newReservation) {
         Reservation reservation = reservationRepository.findById(id).orElseThrow(ReservationNotFoundException::new);
         reservationRepository.updateById(id, newReservation);
-        return reservation; //TRZEBA PRZETESTOWAC
-    }
-
-    public List<Reservation> getAllReservations() {
-        return reservationRepository.findAll();
+        return reservation;
     }
 
     public Reservation deleteReservationById(long id) {
@@ -69,6 +67,7 @@ public class ReservationService {
         twoDatesSearchValidator.validate(twoDatesSearch);
         return reservationRepository.findAllAvaibleRoomsBetweendDates(twoDatesSearch.getStartDate(), twoDatesSearch.getEndDate());
     }
+
     @Deprecated
     public List<Reservation> findAvailableRoomsBetweenDatesAndPrices(TwoDatesAndTwoPriceSearch twoDatesAndTwoPriceSearch) {
 //        twoDatesAndTwoPriceSearchValidator.validate(twoDatesAndTwoPriceSearch);
