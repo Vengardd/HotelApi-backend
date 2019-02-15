@@ -20,8 +20,7 @@ public class User {
     public User() {
     }
 
-    public User(Role role, String username, String password, String email) {
-        this.role = role;
+    public User(String username, String password, String email) {
         this.username = username;
         this.password = password;
         this.email = email;
