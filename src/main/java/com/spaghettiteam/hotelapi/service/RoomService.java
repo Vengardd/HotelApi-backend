@@ -8,6 +8,7 @@ import com.spaghettiteam.hotelapi.repository.room.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -44,5 +45,9 @@ public class RoomService {
         Room room = roomRepository.findById(id).orElseThrow(RoomNotFoundException::new);
         roomRepository.updateById(id, newRoom);
         return room;
+    }
+
+    public List<Room> findAll() {
+        return roomRepository.findAll();
     }
 }

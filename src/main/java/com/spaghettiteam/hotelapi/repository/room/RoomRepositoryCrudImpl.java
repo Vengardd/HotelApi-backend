@@ -25,6 +25,11 @@ public class RoomRepositoryCrudImpl implements RoomRepository {
     }
 
     @Override
+    public List<Room> findAll() {
+        return (List<Room>)roomCrudRepository.findAll();
+    }
+
+    @Override
     public Optional<Room> findById(long id) {
         return roomCrudRepository.findById(id);
     }
