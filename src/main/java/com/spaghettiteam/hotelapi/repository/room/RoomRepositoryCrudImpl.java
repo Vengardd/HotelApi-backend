@@ -36,7 +36,13 @@ public class RoomRepositoryCrudImpl implements RoomRepository {
 
     @Override
     public Room save(Room room) {
-        return roomCrudRepository.save(room);
+        Room roomToReturn;
+        try {
+            roomToReturn = roomCrudRepository.save(room);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
     }
 
     @Override

@@ -13,6 +13,11 @@ public class UserRepositoryCrudImpl implements UserRepository {
     private UserCrudRepository userCrudRepository;
 
     @Override
+    public User save(User user) {
+        return userCrudRepository.save(user);
+    }
+
+    @Override
     public Optional<User> findById(long id) {
         return userCrudRepository.findById(id);
     }

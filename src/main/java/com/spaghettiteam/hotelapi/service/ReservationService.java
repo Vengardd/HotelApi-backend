@@ -5,6 +5,7 @@ import com.spaghettiteam.hotelapi.dto.TwoDatesSearch;
 import com.spaghettiteam.hotelapi.exception.ReservationNotFoundException;
 import com.spaghettiteam.hotelapi.exception.RoomNotFoundException;
 import com.spaghettiteam.hotelapi.model.Reservation;
+import com.spaghettiteam.hotelapi.model.User;
 import com.spaghettiteam.hotelapi.repository.reservation.ReservationRepository;
 import com.spaghettiteam.hotelapi.validation.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +54,7 @@ public class ReservationService {
     public Reservation addReservation(ReservationDTO reservationDTO) {
         twoDatesSearchValidator.validate(new TwoDatesSearch(reservationDTO.getStartDate(), reservationDTO.getEndDate()));
         return reservationRepository.save(Reservation.ReservationBuilder.aReservation()
-                .withUser(userService.findById(reservationDTO.getUserId()))
+                .withUser(new User())
                 .withRoom(roomService.findById(reservationDTO.getRoomId()))
                 .withStartDate(reservationDTO.getStartDate())
                 .build());

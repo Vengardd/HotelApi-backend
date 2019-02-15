@@ -15,4 +15,8 @@ public class UserService {
     public User findById(long id) {
         return userRepository.findById(id).orElseThrow(UserNotFoundException::new);
     }
+
+    public User saveUser(User user) {
+        return userRepository.save(user);
+    }
 }

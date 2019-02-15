@@ -18,6 +18,7 @@ public class RoomController {
     public Room findByRoomNumber(@PathVariable("roomNumber") String roomNumber) {
         return roomService.findByRoomNumber(roomNumber);
     }
+
     @GetMapping("/api/room/id/{Id}")
     public Room findById(@PathVariable("Id") long Id) {
         return roomService.findById(Id);
@@ -37,6 +38,7 @@ public class RoomController {
     public Room updateRoomId(@PathVariable("Id") long Id, @RequestBody Room room) {
         return roomService.updateRoomById(Id, room);
     }
+
     @PostMapping("api/room/add")
     public Room addRoom(@RequestBody RoomDTO roomDTO) {
         return roomService.addRoom(roomDTO);

@@ -15,7 +15,6 @@ public class RoomDTO {
     }
 
     public String getRoomNumber() {
-
         return roomNumber;
     }
 
