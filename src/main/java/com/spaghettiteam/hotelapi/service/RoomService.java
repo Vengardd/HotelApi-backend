@@ -31,7 +31,7 @@ public class RoomService {
 
     public Room addRoom(RoomDTO room) {
         if(!findByRoomNumberWOException(room.getRoomNumber()).isPresent())
-            return roomRepository.save(new Room(room.getRoomNumber()));
+            return roomRepository.save(new Room(room.getRoomNumber(), room.getPricePerDay()));
         throw new RoomAlreadyExistException();
     }
 
