@@ -9,9 +9,9 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @ManyToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(referencedColumnName = "id")
-    private Role role;
+//    @ManyToOne(cascade = {CascadeType.ALL})
+//    @JoinColumn(referencedColumnName = "id")
+//    private Role role;
 
     private String username;
     private String password;
@@ -26,13 +26,13 @@ public class User {
         this.email = email;
     }
 
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
+//    public Role getRole() {
+//        return role;
+//    }
+//
+//    public void setRole(Role role) {
+//        this.role = role;
+//    }
 
     public long getId() {
         return id;
