@@ -21,7 +21,7 @@ public class SearchController {
     private SearchService searchService;
 
     @PostMapping("/api/findrooms")
-    private List<Room> findAvailableRooms(@RequestBody SearchDTO searchDTO) {
+    public List<Room> findAvailableRooms(@RequestBody SearchDTO searchDTO) {
         return searchService.findRooms(searchDTO);
     }
 
