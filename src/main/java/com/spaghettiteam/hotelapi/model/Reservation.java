@@ -18,15 +18,17 @@ public class Reservation {
     private Room room;
     private LocalDate startDate;
     private LocalDate endDate;
+    private double totalPrice;
 
     public Reservation() {
     }
 
-    public Reservation(User user, Room room, LocalDate startDate, LocalDate endDate) {
+    public Reservation(User user, Room room, LocalDate startDate, LocalDate endDate, double totalPrice) {
         this.user = user;
         this.room = room;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.totalPrice = totalPrice;
     }
 
     public long getId() {
@@ -69,6 +71,13 @@ public class Reservation {
         this.endDate = endDate;
     }
 
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
 
     @Override
     public String toString() {
@@ -87,6 +96,7 @@ public class Reservation {
         private Room room;
         private LocalDate startDate;
         private LocalDate endDate;
+        private double totalPrice;
 
         private ReservationBuilder() {
         }
@@ -120,6 +130,11 @@ public class Reservation {
             return this;
         }
 
+        public ReservationBuilder withTotalPrice(double totalPrice) {
+            this.totalPrice = totalPrice;
+            return this;
+        }
+
         public Reservation build() {
             Reservation reservation = new Reservation();
             reservation.setId(id);
@@ -127,6 +142,7 @@ public class Reservation {
             reservation.setRoom(room);
             reservation.setStartDate(startDate);
             reservation.setEndDate(endDate);
+            reservation.setTotalPrice(totalPrice);
             return reservation;
         }
     }
