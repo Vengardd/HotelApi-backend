@@ -30,12 +30,14 @@ public class RoomService {
     }
 
     public Room addRoom(RoomDTO room) {
-        if(!findByRoomNumberWOException(room.getRoomNumber()).isPresent())
-            return roomRepository.save(Room.RoomBuilder.aRoom()
-                    .withRoomNumber(room.getRoomNumber())
-                    .withPricePerDay(room.getPricePerDay())
-                    .build());
-        throw new RoomAlreadyExistException();
+        //Todo make it work
+//        if(!findByRoomNumberWOException(room.getRoomNumber()).isPresent())
+//            return roomRepository.save(Room.RoomBuilder.aRoom()
+//                    .withRoomNumber(room.getRoomNumber())
+//                    .withPricePerDay(room.getPricePerDay())
+//                    .build());
+//        throw new RoomAlreadyExistException();
+        return new Room();
     }
 
     public Room deleteRoomById(long id) {
