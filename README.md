@@ -20,6 +20,6 @@ deleting their reservations and for employees to work on it.
 
 Host:	cloud.hackcube.org  
 Nazwa użytkownika:	root  
-Hasło:	d@#*e1*7J3F+13P  
+Hasło:`d@#*e1*7J3F+13P`
 Port	33066   
 
