@@ -8,12 +8,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin("**")
 @RestController
 public class RoomController {
 
     @Autowired
     private RoomService roomService;
 
+    @CrossOrigin("https://hotelapi-front.firebaseapp.com")
     @GetMapping("/api/roomdto/test1")
     public RoomDTO testRoomDTO() {
         return RoomDTO.RoomDTOBuilder.aRoomDTO()
@@ -24,6 +26,7 @@ public class RoomController {
                 .build();
     }
 
+    @CrossOrigin("https://hotelapi-front.firebaseapp.com")
     @GetMapping("/api/room/test1")
     public Room testRoom() {
         return Room.RoomBuilder.aRoom()
